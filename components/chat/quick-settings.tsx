@@ -206,90 +206,90 @@ export const QuickSettings: FC<QuickSettingsProps> = ({}) => {
             <div className="animate-pulse">Loading assistant...</div>
           ) : (
             <>
-              <div className="overflow-hidden text-ellipsis">
-                {isModified &&
-                  (selectedPreset || selectedAssistant) &&
-                  "Modified "}
+              {/*<div className="overflow-hidden text-ellipsis">*/}
+              {/*  {isModified &&*/}
+              {/*    (selectedPreset || selectedAssistant) &&*/}
+              {/*    "Modified "}*/}
 
-                {selectedPreset?.name ||
-                  selectedAssistant?.name ||
-                  t("Quick Settings")}
-              </div>
+              {/*  {selectedPreset?.name ||*/}
+              {/*    selectedAssistant?.name ||*/}
+              {/*    t("Quick Settings")}*/}
+              {/*</div>*/}
 
-              <IconChevronDown className="ml-1" />
+              {/*<IconChevronDown className="ml-1" />*/}
             </>
           )}
         </Button>
       </DropdownMenuTrigger>
 
-      <DropdownMenuContent
-        className="min-w-[300px] max-w-[500px] space-y-4"
-        align="start"
-      >
-        {presets.length === 0 && assistants.length === 0 ? (
-          <div className="p-8 text-center">No items found.</div>
-        ) : (
-          <>
-            <Input
-              ref={inputRef}
-              className="w-full"
-              placeholder="Search..."
-              value={search}
-              onChange={e => setSearch(e.target.value)}
-              onKeyDown={e => e.stopPropagation()}
-            />
+      {/*<DropdownMenuContent*/}
+      {/*  className="min-w-[300px] max-w-[500px] space-y-4"*/}
+      {/*  align="start"*/}
+      {/*>*/}
+      {/*  {presets.length === 0 && assistants.length === 0 ? (*/}
+      {/*    <div className="p-8 text-center">No items found.</div>*/}
+      {/*  ) : (*/}
+      {/*    <>*/}
+      {/*      <Input*/}
+      {/*        ref={inputRef}*/}
+      {/*        className="w-full"*/}
+      {/*        placeholder="Search..."*/}
+      {/*        value={search}*/}
+      {/*        onChange={e => setSearch(e.target.value)}*/}
+      {/*        onKeyDown={e => e.stopPropagation()}*/}
+      {/*      />*/}
 
-            {!!(selectedPreset || selectedAssistant) && (
-              <QuickSettingOption
-                contentType={selectedPreset ? "presets" : "assistants"}
-                isSelected={true}
-                item={
-                  selectedPreset ||
-                  (selectedAssistant as
-                    | Tables<"presets">
-                    | Tables<"assistants">)
-                }
-                onSelect={() => {
-                  setSelectedPreset(null)
-                  setSelectedAssistant(null)
-                }}
-                image={selectedPreset ? "" : selectedAssistantImage}
-              />
-            )}
+      {/*      {!!(selectedPreset || selectedAssistant) && (*/}
+      {/*        <QuickSettingOption*/}
+      {/*          contentType={selectedPreset ? "presets" : "assistants"}*/}
+      {/*          isSelected={true}*/}
+      {/*          item={*/}
+      {/*            selectedPreset ||*/}
+      {/*            (selectedAssistant as*/}
+      {/*              | Tables<"presets">*/}
+      {/*              | Tables<"assistants">)*/}
+      {/*          }*/}
+      {/*          onSelect={() => {*/}
+      {/*            setSelectedPreset(null)*/}
+      {/*            setSelectedAssistant(null)*/}
+      {/*          }}*/}
+      {/*          image={selectedPreset ? "" : selectedAssistantImage}*/}
+      {/*        />*/}
+      {/*      )}*/}
 
-            {items
-              .filter(
-                item =>
-                  item.name.toLowerCase().includes(search.toLowerCase()) &&
-                  item.id !== selectedPreset?.id &&
-                  item.id !== selectedAssistant?.id
-              )
-              .map(({ contentType, ...item }) => (
-                <QuickSettingOption
-                  key={item.id}
-                  contentType={contentType as "presets" | "assistants"}
-                  isSelected={false}
-                  item={item}
-                  onSelect={() =>
-                    handleSelectQuickSetting(
-                      item,
-                      contentType as "presets" | "assistants"
-                    )
-                  }
-                  image={
-                    contentType === "assistants"
-                      ? assistantImages.find(
-                          image =>
-                            image.path ===
-                            (item as Tables<"assistants">).image_path
-                        )?.base64 || ""
-                      : ""
-                  }
-                />
-              ))}
-          </>
-        )}
-      </DropdownMenuContent>
+      {/*      {items*/}
+      {/*        .filter(*/}
+      {/*          item =>*/}
+      {/*            item.name.toLowerCase().includes(search.toLowerCase()) &&*/}
+      {/*            item.id !== selectedPreset?.id &&*/}
+      {/*            item.id !== selectedAssistant?.id*/}
+      {/*        )*/}
+      {/*        .map(({ contentType, ...item }) => (*/}
+      {/*          <QuickSettingOption*/}
+      {/*            key={item.id}*/}
+      {/*            contentType={contentType as "presets" | "assistants"}*/}
+      {/*            isSelected={false}*/}
+      {/*            item={item}*/}
+      {/*            onSelect={() =>*/}
+      {/*              handleSelectQuickSetting(*/}
+      {/*                item,*/}
+      {/*                contentType as "presets" | "assistants"*/}
+      {/*              )*/}
+      {/*            }*/}
+      {/*            image={*/}
+      {/*              contentType === "assistants"*/}
+      {/*                ? assistantImages.find(*/}
+      {/*                    image =>*/}
+      {/*                      image.path ===*/}
+      {/*                      (item as Tables<"assistants">).image_path*/}
+      {/*                  )?.base64 || ""*/}
+      {/*                : ""*/}
+      {/*            }*/}
+      {/*          />*/}
+      {/*        ))}*/}
+      {/*    </>*/}
+      {/*  )}*/}
+      {/*</DropdownMenuContent>*/}
     </DropdownMenu>
   )
 }
