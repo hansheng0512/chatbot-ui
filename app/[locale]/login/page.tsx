@@ -45,7 +45,7 @@ export default async function Login({
       throw new Error(error.message)
     }
 
-    return redirect(`/${localStorage.getItem("workspaceId")}/chat`)
+    return redirect(`/${homeWorkspace.id}/chat`)
   }
 
   const signIn = async (formData: FormData) => {
